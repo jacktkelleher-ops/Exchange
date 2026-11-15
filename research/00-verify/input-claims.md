@@ -47,3 +47,18 @@ DEV = https://betfair-developer-docs.atlassian.net/wiki/spaces/1smk3cen4v3lu3yom
 | Minimum bet, EUR | Min bet size EUR 1; min deposit EUR 15; min BSP liability EUR 10; min bet payout EUR 20 (lower-stake orders at larger prices). GBP: 1 / 10 / 10 / 10. | `[verified: DEV/2686993/Additional+Information]` |
 | Price ladder (CLASSIC) | 1.01-2: 0.01; 2-3: 0.02; 3-4: 0.05; 4-6: 0.1; 6-10: 0.2; 10-20: 0.5; 20-30: 1; 30-50: 2; 50-100: 5; 100-1000: 10. Matches the input file. | `[verified: DEV/2686993/Additional+Information]` |
 | Market data request limit | sum(weight) x number of market IDs must not exceed 200 points per request, else TOO_MUCH_DATA. Applies to listMarketBook, listRunnerBook, listMarketCatalogue, listMarketProfitandLoss. Page version 49, 2026-11-09. | `[verified: DEV/2687478/Market+Data+Request+Limits]` |
+
+## Addendum 2: Betfair Historical Data Feed Specification (user-supplied official PDF, 2026-11-15)
+
+Source: `docs/inputs/official/Betfair-Historical-Data-Feed-Specification.pdf` (Betfair document, supplied by the user; cited below as SPEC). It mentions betDelayModels in markets published since 17/08/2026, so it is a 2026 version.
+
+| Item | Finding | Tag |
+|---|---|---|
+| History start | Data from May 2015 (AUS/NZ from Oct 2016). JSON in tar.bz2. | `[verified: SPEC p1]` |
+| BASIC content | 1-minute intervals. Last traded price (ltp) per runner plus full marketDefinition changes. No traded volume, no back/lay ladder, no traded-at-price. | `[verified: SPEC p3-4]` |
+| ADVANCED content | 1-second intervals. Best available to back and lay (batb/batl, top levels), traded volume by market and runner, traded price-volume (trd), ltp. | `[verified: SPEC p3-4]` |
+| PRO content | Tick by tick. Full ladder (atb/atl), trd, market tv, ltp, BSP near/far and SP back/lay. | `[verified: SPEC p3-4]` |
+| In every plan (incl. BASIC) | marketDefinition carries marketType, marketBaseRate (commission rate for the market), inPlay, betDelay, crossMatching, status, runner status (WINNER, LOSER, REMOVED, PLACED), runner bsp, adjustmentFactor. | `[verified: SPEC p1-2]` |
+| Consequence for football O/U | If Basic covers O/U markets, it gives a near-close price (last 1-minute ltp before the off), the settled result (runner WINNER/LOSER) and the commission base rate, all free. That is enough for a closing-price benchmark and labels without an outside results source. | `[inferred]` from SPEC |
+| Consequence for resting orders | Basic cannot show fills, queue or depth. Advanced has only best offers at 1-second granularity, so queue simulation needs Pro. Fill rates must come from own logged orders. Racing BSP per runner is free in Basic, usable as a benchmark. | `[inferred]` from SPEC |
+| Still unknown | Which sports and market types each plan covers (O/U in Basic?), and prices of Advanced and Pro. The spec is field-level only. | `[unknown]`: resolve on historicdata.betfair.com plan page or by downloading one free Basic soccer month. |
