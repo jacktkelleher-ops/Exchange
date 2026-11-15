@@ -1,1 +1,39 @@
+# Data (raw and derived), never committed
 data/
+*.parquet
+*.duckdb
+*.duckdb.wal
+*.bz2
+*.tar
+*.gz
+
+# Credentials and certificates
+.env
+.env.*
+!.env.example
+*.pem
+*.crt
+*.key
+certs/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Notebooks and tools
+.ipynb_checkpoints/
+.streamlit/secrets.toml
+logs/
+*.log
+
+# OS and editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

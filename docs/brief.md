@@ -1,45 +1,40 @@
 # Brief
 
-Constraints filled in by the user on 2026-11-15.
-
-Note: a EUR 0 data budget conflicts with live API automation if a paid live key is required (see input claim 4). Resolved in Phase 1 costs checks.
+Constraints for the darts project. Requirements are in `docs/spec.md`. Fields marked TODO are filled by the user in Phase 0. Fields marked "carried over" come from the archived football review brief (2026-11-15) and need the user to confirm they still apply.
 
 ## Objective
 
-Identify Betfair Exchange sports and markets that may offer a positive expected return after costs, then assess whether an odds-producing model or a game theory / market-structure strategy is viable.
+Determine whether a repeatable, cost-adjusted edge exists in Betfair Exchange darts Match Odds markets, pre-match and in-play, from order-book behaviour and liquidity dynamics. Build the data, research and backtesting infrastructure needed to answer that.
 
 ## Operator
 
-- Background: analytics professional, former Betfair Exchange liquidity analyst. Comfortable with bet-level and market transaction logs.
-- Stack: SQL, Python, R, Databricks.
-- Jurisdiction: Ireland. Account on betfair.com, Irish-registered, no known product restrictions (user confirmed 2026-11-15).
+- Background: financial mathematics, commercial analytics, SQL, Python, statistical modelling. Former Betfair Exchange liquidity analyst.
+- Jurisdiction: Ireland. Account on betfair.com, Irish-registered (carried over).
+- Hardware: Windows 11 laptop. Python 3.12 installed.
+
+## Access and data
+
+- Betfair app key held: TODO (none / delayed / live)
+- Willing to pay GBP 499 for a live app key: TODO
+- Budget for historical data (Advanced or Pro plans): TODO. The football review ran on EUR 0.
+- Darts historical files already downloaded: TODO (plan, date range, where they are)
+- Sporting data source for darts in mind: TODO (optional; spec says market data only at first)
 
 ## Constraints
 
-- Starting bankroll: EUR 500. The user will increase it once a model proves itself (user, 2026-11-15). Judge viability on edge after costs and on what a backtest can prove, not on income at EUR 500.
-- Maximum acceptable drawdown: 30% of bankroll (EUR 150)
-- Time available per week: 5 hours
-- Budget for data and tools: EUR 0 to start (free data only until a go decision)
-- Preferred in-play or pre-play: in-play ok
-- Willing to run a live automated strategy via the API: yes
+- Time available per week: 5 hours (carried over)
+- Bankroll for any future execution: EUR 500, scaling once a model proves itself (carried over). Not used before the execution gate.
+- Maximum acceptable drawdown: 30% of bankroll (carried over)
+- Real-money bets: none until the user approves in writing at the execution gate (spec section 11).
 
-## Market families to scan
+## Scope
 
-1. Horse racing
-2. Football (match odds, over/under goals, correct score, first goalscorer)
-3. Tennis
-4. Cricket
-5. Other (golf, basketball, US sports, esports, politics and specials)
+- Sport: darts only. Design so other sports can be added.
+- Markets: Match Odds, pre-match and in-play.
+- Tournaments: all darts Match Odds markets on Betfair, analysed by tournament tier. TODO if the user wants to narrow this.
 
-Add or remove families here. The orchestrator runs one scanner per line.
+## Out of scope until a later gate
 
-## Definition of success for this review
-
-- A ranked list of markets with evidence.
-- For up to three shortlisted markets: a go, no-go or needs-more-data call on each model type.
-- A list of what is verified, inferred and unknown.
-
-## Out of scope
-
-- Writing production trading code.
-- Placing real bets.
+- Order placement of any kind.
+- Deep learning or reinforcement learning (spec section 6).
+- Sporting-state integration (separate module, later).
