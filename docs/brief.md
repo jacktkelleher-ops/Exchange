@@ -16,7 +16,7 @@ Identify Betfair Exchange sports and markets that may offer a positive expected 
 
 ## Constraints
 
-- Starting bankroll: EUR 500
+- Starting bankroll: EUR 500. The user will increase it once a model proves itself (user, 2026-11-15). Judge viability on edge after costs and on what a backtest can prove, not on income at EUR 500.
 - Maximum acceptable drawdown: 30% of bankroll (EUR 150)
 - Time available per week: 5 hours
 - Budget for data and tools: EUR 0 to start (free data only until a go decision)
