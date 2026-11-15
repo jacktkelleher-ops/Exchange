@@ -4,6 +4,8 @@ Ideas and follow-ups outside the current phase.
 
 ## Kalshi as a free side source (checked 2026-11-15, before the market survey reframe)
 
+Status: moved into the Phase 1 survey as a second venue (user, 2026-11-15); see `docs/brief.md`. Added checks: `GET /markets/{ticker}/orderbook` returns the full book with no key (HTTP 200) [verified: curl on KXDARTSMATCH-26NOV160800JWATASOU-JWAT]. Kalshi sports tags include Soccer, Tennis, Cricket, Golf, Darts and Table Tennis; no horse racing, greyhound or snooker tags [verified: `/series`]. Authenticated requests are signed with the private key matching the key ID (RSA-PSS SHA-256 or Ed25519) [verified: https://docs.kalshi.com/getting_started/api_keys.md].
+
 Checked by the orchestrator against Kalshi's public API and docs, with no key.
 
 | Finding | Evidence |

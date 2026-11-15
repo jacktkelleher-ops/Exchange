@@ -30,7 +30,8 @@ Reframed by the user on 2026-11-15. The project no longer starts from darts.
 Set by the user on 2026-11-15.
 
 - Sports: horse racing (UK and Ireland), football, tennis, darts, snooker, cricket, and other sports Phase 1a finds worth including.
-- Data: free first. Forward recording on the delayed key plus free Basic history. Report what free data can and cannot show. Decide at Gate 1 whether to buy Pro samples or the live key.
+- Data: free first. Forward recording on the delayed key plus the user's Basic history. Report what free data can and cannot show. Decide at Gate 1 whether to buy Pro samples or the live key.
+- Kalshi as a second venue (user, 2026-11-15): record Kalshi full-depth order books and trades for the surveyed sports it lists (soccer, tennis, cricket, golf, darts; not racing, greyhounds or snooker). Kalshi depth describes Kalshi, not Betfair, so it is reported per venue and never used as a stand-in for Betfair depth. The user's Kalshi API key ID is in `.env`; the matching private key file is needed only for authenticated or WebSocket access.
 - Time points: before the off at 24 h, 6 h, 1 h, 15 min, 5 min and 1 min; in-play at the start, middle and late stage (first, middle and last third of the in-play period).
 - Viability thresholds: the orchestrator sets them from a literature review and judgement, each with its source or reasoning, in Phase 1a. The advisor reviews them and the user approves them at Gate 1a. No threshold is used before that approval.
 

@@ -35,6 +35,7 @@ Phase 1 answers: which Betfair sports and markets can support short-horizon orde
    | `football` | Football. |
    | `tennis` | Tennis. |
    | `other-sports` | Darts, snooker, cricket, and any other sport with in-play markets worth surveying. |
+   | `kalshi` | Kalshi as a second venue: which surveyed sports and market types it lists and how many per week; order book and trade endpoints and their fields (start from `docs/backlog.md`); rate limits for unauthenticated REST polling; whether the WebSocket order book channel needs authentication; terms on research use of the data; whether a resident of Ireland can open an account or trade. |
    | `viability-literature` | Academic and practitioner evidence on betting exchange microstructure: liquidity and depth measures, spread, update and trade frequency, short-horizon price predictability, competition from automated traders, latency and bet delay, cost hurdles. Collect the metric definitions and any published values or thresholds, with sources. |
 
    Each sport topic (`racing`, `football`, `tennis`, `other-sports`) answers: market types that go in-play; pre-off and in-play bet delay; suspension rules; number of markets per day and week; evidence on matched volume, depth and spread at different times before the off and in-play; and who the competition is (automated traders, in-running data feeds). Each may read the matching archived desk scan in `archive/football-review-2026-11/research/01-scan/` (`horse-racing.md`, `football.md`, `tennis.md`, `cricket.md`, `other.md`) as leads only. Archive claims are `[inferred]` until confirmed in this session.
@@ -46,7 +47,7 @@ Phase 1 answers: which Betfair sports and markets can support short-horizon orde
 
 ### Phase 1b: Recording
 
-1. Launch `engineer` to build a minimal read-only survey recorder in `survey/` with tests, following `survey-plan.md`: subscribe to the planned markets, write raw stream messages unchanged with a receive timestamp to `data/raw/survey/`, rotate subscriptions within the cap, reconnect after drops, and log gaps. No order operations. Credentials only from `.env`.
+1. Launch `engineer` to build a minimal read-only survey recorder in `survey/` with tests, following `survey-plan.md`: subscribe to the planned Betfair markets, write raw stream messages unchanged with a receive timestamp to `data/raw/survey/betfair/`, rotate subscriptions within the cap, reconnect after drops, and log gaps. Also poll Kalshi order books and trades for the planned Kalshi markets within its rate limits, writing raw responses with a receive timestamp to `data/raw/survey/kalshi/`. No order operations on either venue. Credentials only from `.env`.
 2. Run the tests yourself. Then run a short smoke recording covering at least one live market of each sport available at the time.
 3. Launch `data-auditor` on the smoke recording (`research/01-verify/smoke-audit.md`). Fix problems before the full run.
 4. Tell me how to start, check and restart the full recording, and what to download from Basic history. The laptop must stay on and awake for the recording period.

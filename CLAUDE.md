@@ -18,7 +18,7 @@ The main session is the orchestrator. Subagents cannot spawn other subagents, so
 | Phase | Name | Agents | Main outputs | Spec deliverable |
 |---|---|---|---|---|
 | 0 | Brief | orchestrator | `docs/brief.md` complete | |
-| 1a | Market survey: desk research and plan | `docs-verifier` x8 in parallel, then advisor | `research/01-verify/*.md`, `docs/viability-criteria.md`, `research/01-verify/survey-plan.md` | part of 11 |
+| 1a | Market survey: desk research and plan | `docs-verifier` x9 in parallel, then advisor | `research/01-verify/*.md`, `docs/viability-criteria.md`, `research/01-verify/survey-plan.md` | part of 11 |
 | 1b | Market survey: recording | `engineer` (survey recorder), then `data-auditor` | `survey/`, `data/raw/survey/`, `research/01-verify/data-audit.md` | |
 | 1c | Market survey: measure and select | `quant-researcher`, then `skeptic`, then advisor | `research/01-verify/survey-results.md`, `market-ranking.md`, `requirements.md` | B |
 | 2 | Design | `docs-verifier` (sporting data), `architect`, then `skeptic` | `docs/architecture.md`, `docs/schema.md`, `docs/dev-plan.md`, `research/02-design/review.md` | A, C |
