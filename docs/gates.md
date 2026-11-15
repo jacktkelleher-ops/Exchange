@@ -7,14 +7,30 @@ A phase passes its gate only when every criterion holds and the user approves. T
 - Every TODO in `docs/brief.md` is filled or explicitly deferred by the user.
 - Each conflict in `docs/known-facts.md` has a user decision or is marked "decide at Gate 1".
 
-## Gate 1: Access and data verified (spec deliverable B)
+## Gate 1a: Desk research and survey plan
 
-- All five topic files exist in `research/01-verify/` and follow the template.
-- Every API operation and field the collector needs is tagged `[verified: URL]`.
-- `requirements.md` lists every spec section 3 item with status, source and cost.
-- If a darts sample was available, `data-audit.md` confirms fields and granularity from real files.
-- The limitations section states which spec requirements cannot be met under the brief.
-- The user has chosen the data tier and key type.
+- All Phase 1a topic files exist in `research/01-verify/` and follow the template.
+- Every API operation and field the survey recorder needs is tagged `[verified: URL]`.
+- Every threshold in `docs/viability-criteria.md` has a cited source or stated reasoning.
+- The advisor was consulted on the criteria and the consult is logged in `docs/decisions.md`.
+- `survey-plan.md` fits the stream market cap and states what free data cannot measure.
+- The user has approved the criteria and the plan, and has put credentials in `.env`.
+
+## Gate 1b: Recording
+
+- Recorder tests pass, and the recorder contains no order operations and logs no credentials.
+- The smoke audit found no blocking problem, or each one was fixed.
+- The full recording covered the planned period, with gaps counted and explained.
+- `data-audit.md` confirms, from the real files, the fields, ladder depth, update granularity and delay behaviour per sport.
+
+## Gate 1: Market selected (spec deliverable B)
+
+- `survey-results.md` reports every criterion metric per sport, market type and time point, with sample sizes, or says why it could not be measured.
+- `market-ranking.md` scores every surveyed market against `docs/viability-criteria.md`, including costs, competition and latency.
+- Skeptic review has no unresolved `refuted` item.
+- The advisor was consulted on the selection and the data tier, and the consult is logged.
+- `requirements.md` lists every spec section 3 item for the selected market with status, source and cost, and a limitations section.
+- The user has selected the market and chosen the data tier and key type.
 
 ## Gate 2: Design (deliverables A, C)
 

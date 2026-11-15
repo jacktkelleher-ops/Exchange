@@ -1,6 +1,6 @@
-# Exchange: Betfair darts quantitative trading research
+# Exchange: Betfair quantitative trading research
 
-Research platform for testing whether a repeatable, cost-adjusted trading edge exists in Betfair Exchange darts markets, using order-book behaviour, order flow and liquidity dynamics.
+Research platform for finding which Betfair Exchange sports and markets can support short-horizon trading driven by order-book behaviour, order flow and liquidity dynamics, and then testing whether a repeatable, cost-adjusted edge exists in the selected market.
 
 Status: setup. No trading code. Read-only data collection and research only; no orders are placed without explicit approval at the execution gate.
 
@@ -11,9 +11,9 @@ The work runs as a gated multi-agent pipeline in Claude Code. The main session o
 | Phase | Output |
 |---|---|
 | 0 Brief | Constraints and access decisions |
-| 1 Verify | Betfair API access, historical data plans, darts markets, sporting data and tooling, checked against official sources |
+| 1a, 1b, 1c Market survey | Desk research and viability criteria, a free recording survey across sports, then measurement and market selection |
 | 2 Design | Architecture, storage schema, development plan |
-| 3 Ingest | Darts market data ingestion with tests and a data quality report |
+| 3 Ingest | Market data ingestion for the selected market with tests and a data quality report |
 | 4 First look | Streamlit dashboard, order-book imbalance notebook, install guide |
 | 5 Status | Memo and plan for features, regimes, prediction and backtesting |
 

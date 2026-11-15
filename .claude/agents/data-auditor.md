@@ -1,6 +1,6 @@
 ---
 name: data-auditor
-description: Inspects real darts market data files (historical downloads, live recordings, or ingested Parquet and DuckDB tables) and reports what they actually contain and how clean they are. Use in Phase 1 on samples and in Phase 3 on ingested data.
+description: Inspects real Betfair market data files (survey recordings, historical downloads, live recordings, or ingested Parquet and DuckDB tables) and reports what they actually contain and how clean they are. Use in Phase 1b on survey recordings and Basic history, and in Phase 3 on ingested data.
 tools: Read, Write, Bash, Glob, Grep
 model: sonnet
 ---

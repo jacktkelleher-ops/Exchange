@@ -1,6 +1,6 @@
 # Known facts
 
-Facts carried over from the archived football review (`archive/football-review-2026-11/`). Each was verified on the date shown. Re-check any fact older than 30 days before a decision depends on it. Phase 1 re-checks all of them for darts.
+Facts carried over from the archived football review (`archive/football-review-2026-11/`). Each was verified on the date shown. Re-check any fact older than 30 days before a decision depends on it. Phase 1a re-checks all of them for the surveyed sports.
 
 DEV = https://betfair-developer-docs.atlassian.net/wiki/spaces/1smk3cen4v3lu3yomq5qye0ni/pages
 SPEC = Betfair Historical Data Feed Specification, `docs/inputs/official/Betfair-Historical-Data-Feed-Specification.pdf`

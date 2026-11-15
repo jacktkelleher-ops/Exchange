@@ -1,24 +1,27 @@
-# Exchange: Betfair darts quantitative trading research
+# Exchange: Betfair quantitative trading research
 
-Goal: find out whether a repeatable trading edge exists in Betfair Exchange darts markets after costs, using market microstructure, order flow and aggregate participant behaviour. Research and infrastructure first. Execution only after a proven edge and the user's explicit written approval.
+Goal (reframed by the user on 2026-11-15): first, find which Betfair Exchange sports and markets can support short-horizon trading driven by market microstructure, order flow and aggregate participant behaviour, and whether a retail trader could win there after costs. Then, in the selected market, find out whether a repeatable edge exists. Research and infrastructure first. Execution only after a proven edge and the user's explicit written approval.
 
-- Requirements: `docs/spec.md` (the user's starting prompt, authoritative).
+- Requirements: `docs/spec.md` (the user's starting prompt, authoritative). It was written for darts; per `docs/brief.md` it now applies to the market selected at Gate 1.
+- Viability criteria for the market survey: `docs/viability-criteria.md` (from Phase 1a).
 - Constraints (budget, access, time, bankroll): `docs/brief.md`.
 - Pass criteria for every gate: `docs/gates.md`.
 - Facts carried over from earlier work: `docs/known-facts.md`.
 - If the spec and the brief conflict (for example the spec needs data the budget does not cover), stop and ask the user. Do not quietly downgrade the spec.
 
-History: this repo previously held a cross-sport opportunity review. It is archived in `archive/football-review-2026-11/` and tagged `football-review-2026-11`. Agents do not read the archive unless told to.
+History: this repo previously held a cross-sport opportunity review. It is archived in `archive/football-review-2026-11/` and tagged `football-review-2026-11`. Agents do not read the archive unless told to. Phase 1a sport verifiers are told to read its desk scans as leads.
 
 ## How the pipeline runs
 
-The main session is the orchestrator. Subagents cannot spawn other subagents, so the main session chains them. Run `/run-phase <n>`. The procedure for each phase is in `.claude/commands/run-phase.md`. Every phase ends at a gate: stop, show the user the gate summary, and do not start the next phase without approval.
+The main session is the orchestrator. Subagents cannot spawn other subagents, so the main session chains them. Run `/run-phase <n>` (n is 0, 1a, 1b, 1c, 2, 3, 4 or 5). The procedure for each phase is in `.claude/commands/run-phase.md`. Every phase ends at a gate: stop, show the user the gate summary, and do not start the next phase without approval.
 
 | Phase | Name | Agents | Main outputs | Spec deliverable |
 |---|---|---|---|---|
 | 0 | Brief | orchestrator | `docs/brief.md` complete | |
-| 1 | Verify access and data | `docs-verifier` x5 in parallel, then `data-auditor` | `research/01-verify/*.md`, `research/01-verify/requirements.md` | B, part of 11 |
-| 2 | Design | `architect`, then `skeptic` | `docs/architecture.md`, `docs/schema.md`, `docs/dev-plan.md`, `research/02-design/review.md` | A, C |
+| 1a | Market survey: desk research and plan | `docs-verifier` x8 in parallel, then advisor | `research/01-verify/*.md`, `docs/viability-criteria.md`, `research/01-verify/survey-plan.md` | part of 11 |
+| 1b | Market survey: recording | `engineer` (survey recorder), then `data-auditor` | `survey/`, `data/raw/survey/`, `research/01-verify/data-audit.md` | |
+| 1c | Market survey: measure and select | `quant-researcher`, then `skeptic`, then advisor | `research/01-verify/survey-results.md`, `market-ranking.md`, `requirements.md` | B |
+| 2 | Design | `docs-verifier` (sporting data), `architect`, then `skeptic` | `docs/architecture.md`, `docs/schema.md`, `docs/dev-plan.md`, `research/02-design/review.md` | A, C |
 | 3 | Ingest | `engineer` per module, then `data-auditor` and `skeptic` | `src/`, `tests/`, `research/03-ingest/*.md` | D |
 | 4 | First look | `engineer` (dashboard, README) and `quant-researcher` (notebook) in parallel, then `skeptic` | `app/`, `notebooks/01-orderbook-imbalance.ipynb`, `README.md`, `research/04-first-look/review.md` | E, F, G |
 | 5 | Status memo | orchestrator | `research/05-status.md` | |
@@ -39,7 +42,8 @@ Rule: hard design calls get the strongest model; routine edits get Sonnet.
 
 `principal-engineer` is a read-only advisor. The orchestrator consults it only for decisions that are expensive to get wrong, with one specific question per call:
 
-- Gate 1: data tier and key type when the spec and the brief conflict.
+- Gate 1a: whether the viability metrics and thresholds are sound for choosing a market.
+- Gate 1: the market selection, and the data tier and key type when the spec and the brief conflict.
 - Gate 2: what the schema must guarantee (timestamps, ladder reconstruction, volume deltas) and the queue assumptions in the fill model.
 - Phase 6 onward: backtest design, leakage risks, and whether a feature or regime result is real or overfit.
 - Any claimed edge, before it goes in a status memo or toward the execution gate.
@@ -101,7 +105,8 @@ Plain, concise sentences. No em dashes. No filler. Prefer tables for comparisons
 
 - `docs/` spec, brief, gates, known facts, decision log, architecture, schema, templates, inputs
 - `research/` agent reports, one folder per phase
-- `src/`, `tests/`, `app/`, `notebooks/` code (from Phase 3 onward)
+- `survey/` the Phase 1b survey recorder
+- `src/`, `tests/`, `app/`, `notebooks/` code (from Phase 3 onward; the survey notebook in Phase 1c)
 - `data/` raw and derived data, git-ignored
 - `.claude/agents/` subagent definitions
 - `.claude/commands/` the `/run-phase` command

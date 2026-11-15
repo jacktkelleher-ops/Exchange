@@ -1,6 +1,6 @@
 ---
 name: quant-researcher
-description: Runs quantitative analysis on darts market data in notebooks, covering order-book features, statistical tests, regimes, predictive models and backtest evaluation. Use in Phase 4 for the first notebook and in later research phases.
+description: Runs quantitative analysis on Betfair market data in notebooks, covering the Phase 1c market survey metrics and ranking, order-book features, statistical tests, regimes, predictive models and backtest evaluation. Use in Phase 1c, Phase 4 and later research phases.
 tools: Read, Write, Edit, Bash, Glob, Grep
 model: sonnet
 ---
