@@ -31,7 +31,7 @@ Rule: hard design calls get the strongest model; routine edits get Sonnet.
 | Role | Who | Model |
 |---|---|---|
 | Orchestrator | main session (`.claude/settings.json`) | Opus |
-| Advisor | `principal-engineer` | Fable |
+| Advisor | `principal-engineer` | Fable 5.2 (`claude-fable-5-2`, pinned; needs Claude Code 2.1.290 or newer) |
 | Design and review | `architect`, `skeptic` | Opus |
 | Workers | `docs-verifier`, `data-auditor`, `engineer`, `quant-researcher` | Sonnet |
 
