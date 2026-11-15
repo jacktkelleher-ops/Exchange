@@ -22,7 +22,7 @@ Reframed by the user on 2026-11-15. The project no longer starts from darts.
 - Betfair app key held: delayed key (user, 2026-11-15).
 - Willing to pay GBP 499 for a live app key: decide at Gate 1, once Phase 1 has verified and measured what the delayed key returns (user, 2026-11-15).
 - Budget for historical data (Advanced or Pro plans): decide at Gate 1. Until then, EUR 0 (user, 2026-11-15).
-- Historical files already downloaded for this project: none (user, 2026-11-15).
+- Historical files: the user's purchased Betfair data is all Basic Plan (see `docs/known-facts.md` for ranges). Downloaded by the orchestrator on 2026-11-15 to `data/raw/betfair_historic/<sport>/basic-plan/<year>.tar` with `scripts/historic/`. No Advanced or Pro data is held.
 - Sporting data source: none in mind, deferred until a market is selected (user, 2026-11-15).
 
 ## Market survey (Phase 1)
