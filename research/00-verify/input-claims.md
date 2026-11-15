@@ -35,3 +35,15 @@ DEV = https://betfair-developer-docs.atlassian.net/wiki/spaces/1smk3cen4v3lu3yom
 - A live key costs GBP 499 (about EUR 590 at an assumed rate `[inferred]`), more than the whole EUR 500 bankroll and outside the EUR 0 budget.
 - The free delayed key can still place real bets and stream data, but prices are delayed by up to 180 seconds and show 3 levels. That rules out latency-sensitive in-play trading and queue-based market making. It still allows pre-play model betting and slow in-play strategies that rest passive orders `[inferred]`.
 - Basic historical data (free) is widely reported as 1-minute last traded price with no volume `[inferred]`. Paid tiers are needed for queue or order-book tests.
+
+## Orchestrator addendum (2026-11-15, read via Confluence REST API, overrides conflicting tags above)
+
+DEV = https://betfair-developer-docs.atlassian.net/wiki/spaces/1smk3cen4v3lu3yomq5qye0ni/pages
+
+| Item | Finding | Tag |
+|---|---|---|
+| Delayed key bet placement | Table row "Bet Placement (Live Exchange): Delayed Yes, Live Yes". The delayed key "operates on the live (production) Betfair Exchange". Page version 144, 2026-11-02. Older snippets saying it cannot bet are out of date. | `[verified: DEV/2687105/Application+Keys]` |
+| Delayed key intended use | "The Delayed App Key should be used for development purposes and any functional testing." Running a sustained live strategy on it may conflict with Betfair's intended use. Whether Betfair enforces this is unknown. | `[verified: DEV/2687105/Application+Keys]` (wording), enforcement `[unknown]` |
+| Minimum bet, EUR | Min bet size EUR 1; min deposit EUR 15; min BSP liability EUR 10; min bet payout EUR 20 (lower-stake orders at larger prices). GBP: 1 / 10 / 10 / 10. | `[verified: DEV/2686993/Additional+Information]` |
+| Price ladder (CLASSIC) | 1.01-2: 0.01; 2-3: 0.02; 3-4: 0.05; 4-6: 0.1; 6-10: 0.2; 10-20: 0.5; 20-30: 1; 30-50: 2; 50-100: 5; 100-1000: 10. Matches the input file. | `[verified: DEV/2686993/Additional+Information]` |
+| Market data request limit | sum(weight) x number of market IDs must not exceed 200 points per request, else TOO_MUCH_DATA. Applies to listMarketBook, listRunnerBook, listMarketCatalogue, listMarketProfitandLoss. Page version 49, 2026-11-09. | `[verified: DEV/2687478/Market+Data+Request+Limits]` |
