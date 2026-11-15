@@ -44,6 +44,8 @@ Rule: hard design calls get the strongest model; routine edits get Sonnet.
 - Phase 6 onward: backtest design, leakage risks, and whether a feature or regime result is real or overfit.
 - Any claimed edge, before it goes in a status memo or toward the execution gate.
 
+Model date guard: Fable 5.2 is included in the user's plan only until 2026-11-16. On or after 2026-11-17, before any consult, check the `model:` line in `.claude/agents/principal-engineer.md`. If it still says `claude-fable-5-2`, change it to `claude-opus-5-5`, update the Advisor row above, delete this paragraph, and commit before consulting.
+
 Never use it for coding, audits, scans or routine edits. Start a fresh advisor for each question; never keep one running or resume it across a phase. After each consult, the orchestrator records the date, question, answer and the user's decision in `docs/decisions.md`. The advisor never writes that file. Its answer is advice: the gate decision stays with the user.
 
 ## Review and done
