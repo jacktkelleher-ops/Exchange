@@ -20,6 +20,13 @@ SPEC = Betfair Historical Data Feed Specification, `docs/inputs/official/Betfair
 | Basic files use the stream JSON format: lines with `pt` (publish time, epoch ms) and `mc` (market changes) containing `marketDefinition` and `rc` (runner changes). | [verified: archive/football-review-2026-11/scripts/scan_basic.py run on a Basic soccer download] |
 | `marketBaseRate` in Basic soccer files was 5.0. It does not show the account's own commission rate. | [verified: same download] |
 
+## Delayed key behaviour (measured on the user's key, 2026-11-15)
+
+| Fact | Source |
+|---|---|
+| Stream API: one update per market every 180 s (`conflateMs` 180000), full `atb`/`atl` ladders (up to 141 levels seen), `trd`, runner and market `tv`, `ltp`. The "3 price levels" row above does not hold for the stream. | [verified: data/raw/probe/20261115T233458Z.jsonl, scripts/probe/analyse_probe.py] |
+| listMarketBook polling refreshes at least every 5 s and returns `totalMatched`, but the data is a variable 5 to 240 s old (poll time minus `lastMatchTime` on busy in-play markets). | [verified: scripts/probe/delayed_poll_probe.py run] |
+
 ## Historical Data API behaviour (verified by running it, 2026-11-15)
 
 | Fact | Source |
