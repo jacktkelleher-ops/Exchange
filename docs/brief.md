@@ -1,6 +1,8 @@
 # Brief
 
-Fill in the blanks marked TODO before running `/run-review`. The orchestrator will ask if any are empty.
+Constraints filled in by the user on 2026-11-15.
+
+Note: a EUR 0 data budget conflicts with live API automation if a paid live key is required (see input claim 4). Resolved in Phase 1 costs checks.
 
 ## Objective
 
@@ -10,16 +12,16 @@ Identify Betfair Exchange sports and markets that may offer a positive expected 
 
 - Background: analytics professional, former Betfair Exchange liquidity analyst. Comfortable with bet-level and market transaction logs.
 - Stack: SQL, Python, R, Databricks.
-- Jurisdiction: Ireland. TODO: confirm Betfair account jurisdiction and any product restrictions.
+- Jurisdiction: Ireland. Account on betfair.com, Irish-registered, no known product restrictions (user confirmed 2026-11-15).
 
 ## Constraints
 
-- Starting bankroll: TODO
-- Maximum acceptable drawdown: TODO
-- Time available per week: TODO
-- Budget for data and tools: TODO
-- Preferred in-play or pre-play: TODO (pre-play only / in-play ok)
-- Willing to run a live automated strategy via the API: TODO (yes / no / later)
+- Starting bankroll: EUR 500
+- Maximum acceptable drawdown: 30% of bankroll (EUR 150)
+- Time available per week: 5 hours
+- Budget for data and tools: EUR 0 to start (free data only until a go decision)
+- Preferred in-play or pre-play: in-play ok
+- Willing to run a live automated strategy via the API: yes
 
 ## Market families to scan
 
