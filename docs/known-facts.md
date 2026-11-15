@@ -34,7 +34,7 @@ SPEC = Betfair Historical Data Feed Specification, `docs/inputs/official/Betfair
 
 ## Conflicts between the spec and current access
 
-These need a user decision in Phase 0 or at Gate 1.
+User decision (Phase 0, 2026-11-15): all rows below are decided at Gate 1. The spec is not narrowed before then.
 
 | Spec requirement | Needs | With free access only |
 |---|---|---|
