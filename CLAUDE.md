@@ -24,6 +24,34 @@ The main session is the orchestrator. Subagents cannot spawn other subagents, so
 | 5 | Status memo | orchestrator | `research/05-status.md` | |
 | 6+ | Features, regimes, prediction, backtest, strategy, paper trading, execution | defined in `docs/gates.md` | | Not started. Plan each one at the end of the phase before it. |
 
+## Models by role
+
+Rule: hard design calls get the strongest model; routine edits get Sonnet.
+
+| Role | Who | Model |
+|---|---|---|
+| Orchestrator | main session (`.claude/settings.json`) | Opus |
+| Advisor | `principal-engineer` | Fable |
+| Design and review | `architect`, `skeptic` | Opus |
+| Workers | `docs-verifier`, `data-auditor`, `engineer`, `quant-researcher` | Sonnet |
+
+## Advisor
+
+`principal-engineer` is a read-only advisor. The orchestrator consults it only for decisions that are expensive to get wrong, with one specific question per call:
+
+- Gate 1: data tier and key type when the spec and the brief conflict.
+- Gate 2: what the schema must guarantee (timestamps, ladder reconstruction, volume deltas) and the queue assumptions in the fill model.
+- Phase 6 onward: backtest design, leakage risks, and whether a feature or regime result is real or overfit.
+- Any claimed edge, before it goes in a status memo or toward the execution gate.
+
+Never use it for coding, audits, scans or routine edits. Start a fresh advisor for each question; never keep one running or resume it across a phase. After each consult, the orchestrator records the date, question, answer and the user's decision in `docs/decisions.md`. The advisor never writes that file. Its answer is advice: the gate decision stays with the user.
+
+## Review and done
+
+- The reviewer is never the agent that wrote the work.
+- A task is not done until its test, script or notebook has actually run in this session and the command and its output are reported. "It should work" is not a result.
+- Before review, the orchestrator checks the outputs of parallel agents for duplicate work and file collisions.
+
 ## Rules for every agent
 
 ### Evidence
@@ -69,7 +97,7 @@ Plain, concise sentences. No em dashes. No filler. Prefer tables for comparisons
 
 ## Folders
 
-- `docs/` spec, brief, gates, known facts, architecture, schema, templates, inputs
+- `docs/` spec, brief, gates, known facts, decision log, architecture, schema, templates, inputs
 - `research/` agent reports, one folder per phase
 - `src/`, `tests/`, `app/`, `notebooks/` code (from Phase 3 onward)
 - `data/` raw and derived data, git-ignored
