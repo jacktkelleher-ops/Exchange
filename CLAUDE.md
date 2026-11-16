@@ -34,7 +34,7 @@ Rule: hard design calls get the strongest model; routine edits get Sonnet.
 | Role | Who | Model |
 |---|---|---|
 | Orchestrator | main session (`.claude/settings.json`) | Opus |
-| Advisor | `principal-engineer` | Fable 5.2 (`claude-fable-5-2`, pinned; needs Claude Code 2.1.290 or newer) |
+| Advisor | `principal-engineer` | Opus 5.5 (`claude-opus-5-5`, pinned). Moved from Fable 5.2 on 2026-11-16 to avoid Fable charges after the plan inclusion ended. |
 | Design and review | `architect`, `skeptic` | Opus |
 | Workers | `docs-verifier`, `data-auditor`, `engineer`, `quant-researcher` | Sonnet |
 
@@ -47,8 +47,6 @@ Rule: hard design calls get the strongest model; routine edits get Sonnet.
 - Gate 2: what the schema must guarantee (timestamps, ladder reconstruction, volume deltas) and the queue assumptions in the fill model.
 - Phase 6 onward: backtest design, leakage risks, and whether a feature or regime result is real or overfit.
 - Any claimed edge, before it goes in a status memo or toward the execution gate.
-
-Model date guard: Fable 5.2 is included in the user's plan only until 2026-11-16. On or after 2026-11-17, before any consult, check the `model:` line in `.claude/agents/principal-engineer.md`. If it still says `claude-fable-5-2`, change it to `claude-opus-5-5`, update the Advisor row above, delete this paragraph, and commit before consulting.
 
 Never use it for coding, audits, scans or routine edits. Start a fresh advisor for each question; never keep one running or resume it across a phase. After each consult, the orchestrator records the date, question, answer and the user's decision in `docs/decisions.md`. The advisor never writes that file. Its answer is advice: the gate decision stays with the user.
 
